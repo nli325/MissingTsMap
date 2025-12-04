@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Figma Prototype Embed</title>
     <style>
-        /* 1. Basic Reset and Layout */
+        /* 1. Basic Reset and Layout with Background Image */
         body {
             margin: 0;
             padding: 0;
@@ -13,28 +13,35 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f5f5f5; /* Light grey background */
             font-family: sans-serif;
+
+            /* --- Setting the Background Image --- */
+            /* Ensure 'image_0.png' is in the same folder as this HTML file */
+            background-image: url('paper.jpeg');
+            /* A fallback color in case the image doesn't load */
+            background-color: #e0e0e0; 
+            /* Tiles the image repeatedly across the screen, creating a seamless texture */
+            background-repeat: repeat;
+            /* Centers the starting point of the texture */
+            background-position: center center;
         }
 
         /* 2. The Responsive Container */
+        /* This keeps the embed centered and maintains aspect ratio */
         .embed-container {
             position: relative;
             width: 90%;            /* Width relative to the screen */
-            max-width: 800px;      /* Don't get wider than the original 800px */
+            max-width: 800px;      /* Max width of the original design */
             
-            /* Aspect Ratio Hack: 
-               450px height / 800px width = 0.5625 
-               0.5625 * 100 = 56.25% 
-            */
+            /* Aspect Ratio Calculation: (450 / 800) * 100 = 56.25% */
             padding-bottom: 56.25%; 
             height: 0;
             overflow: hidden;
             
-            /* Aesthetics */
+            /* Aesthetics: A white box is crucial here for contrast against the busy background texture */
             background: #fff;
             border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3); /* Slightly stronger shadow for better pop */
         }
 
         /* 3. The Iframe Styling */
@@ -44,7 +51,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border: 1px solid rgba(0, 0, 0, 0.1); /* Kept your original border */
+            border: none; /* Removing the default iframe border for a cleaner look inside the container */
         }
     </style>
 </head>
